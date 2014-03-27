@@ -1,0 +1,36 @@
+$cell-size: 88px;
+
+html {
+  font-family: sans-serif;
+}
+table {
+  margin: $cell-size auto;
+  position: relative;
+  border-collapse: collapse;
+}
+.calendar-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  td {
+    background-color: #ccc;
+    color: white;
+  }
+}
+td {
+  width: $cell-size;
+  height: $cell-size;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+td.calendar-weekday-6,
+td.calendar-weekday-7 {
+  background-color: #fafafa;
+}
+.month-label {
+  position: absolute;
+  left: -120px;
+  display: block;
+  width: 100px;
+  text-align: right;
+}
