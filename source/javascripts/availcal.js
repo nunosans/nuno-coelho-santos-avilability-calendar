@@ -8,6 +8,11 @@ cal_months_labels = ['January', 'February', 'March', 'April',
 
 // these are the current unavailable dates.
 cal_unavailable_dates = [
+  '31-03-2014',
+  '01-04-2014',
+  '02-04-2014',
+  '03-04-2014',
+  '04-04-2014',
   '14-04-2014',
   '15-04-2014',
   '16-04-2014',
@@ -70,9 +75,8 @@ Calendar.prototype.generateHTML = function(){
     // this loop is for weekdays (cells)
     for (var weekDay = 0; weekDay <= 6; weekDay++) {
 
-      var id = 'day-' + ("0" + day).slice(-2) + '-' + ("0" + (this.month + 1)).slice(-2) + '-' + this.year;
-
       if (day <= monthLength && (week > 0 || weekDay >= startingDay)) {
+        var id = 'day-' + ("0" + day).slice(-2) + '-' + ("0" + (this.month + 1)).slice(-2) + '-' + this.year;
         html += '<td id="' + id + '">' +  day + '</td>';
         day++;
       } else if (day > monthLength && month < 5) {
@@ -86,11 +90,12 @@ Calendar.prototype.generateHTML = function(){
         monthLength = cal_days_in_month[this.month];
         firstDay = new Date(this.year, this.month, 1);
         startingDay = firstDay.getDay() - 1;
+        var id = 'day-' + ("0" + day).slice(-2) + '-' + ("0" + (this.month + 1)).slice(-2) + '-' + this.year;
         html += '<td id="' + id + '">' + '<b class="month-label">' +
                 cal_months_labels[this.month] + '</b> ' + day + '</td>';
         day++;
       } else {
-        html += '<td class="empty-entry"></td>';
+        html += '<td class="empty"></td>';
       };
 
     };
@@ -112,8 +117,67 @@ $(document).ready(function() {
   $.each(cal_unavailable_dates, function() {
     // console.log(this);
     id = '#day-' + this;
-    console.log(id);
     $(id).addClass('unavailable');
   });
+
+  var requestedDays = []
+
+  $('td').click(function() {
+    $el = $(this);
+
+    if (!$el.hasClass('unavailable') && !$el.hasClass('empty') && !$el.hasClass('selected')) {
+
+      requestedDays.push($el.attr('id').slice(-10));
+      console.log(requestedDays);
+
+      if (requestedDays.length == 1) {
+        var requestText = 'Request 1 day'
+      } else {
+        var requestText = 'Request ' + requestedDays.length + ' days'
+      };
+
+      $('.request-button').text(requestText).show();
+      $el.addClass('selected');
+
+    } else if ($el.hasClass('selected')) {
+
+      requestedDays = $.grep(requestedDays, function(a){
+        return a != $el.attr('id').slice(-10);
+      });
+      console.log(requestedDays);
+
+      if (requestedDays.length == 0) {
+        $('.request-button').hide();
+      } else if (requestedDays.length == 1) {
+        var requestText = 'Request 1 day';
+      } else {
+        var requestText = 'Request ' + requestedDays.length + ' days';
+
+      };
+
+      $('.request-button').text(requestText);
+      $el.removeClass('selected');
+
+    };
+  });
+
+  function defineCurrentDate() {
+
+    today = new Date().format("dd-mm-yyyy");
+    today = $('#day-' + today);
+    today.addClass('today').prevAll().addClass('past').end().parent()
+      .prevAll().remove(':not(.calendar-header)');
+    today.wrapInner('<b></b>');
+
+  };
+  defineCurrentDate();
+
+  $('.close').click(function() {
+    $('.request-form').hide();
+  });
+
+  $('.request-button').click(function() {
+    $('.request-form').show();
+  })
 
 });
