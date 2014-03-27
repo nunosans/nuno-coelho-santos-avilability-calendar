@@ -8,11 +8,11 @@ cal_months_labels = ['January', 'February', 'March', 'April',
 
 // these are the current unavailable dates.
 cal_unavailable_dates = [
-  '14-03-2014',
-  '15-03-2014',
-  '16-03-2014',
-  '17-03-2014',
-  '18-03-2014'
+  '14-04-2014',
+  '15-04-2014',
+  '16-04-2014',
+  '17-04-2014',
+  '18-04-2014'
 ];
 
 // these are the days of the week for each month, in order
@@ -70,7 +70,7 @@ Calendar.prototype.generateHTML = function(){
     // this loop is for weekdays (cells)
     for (var weekDay = 0; weekDay <= 6; weekDay++) {
 
-      var id = ("0" + day).slice(-2) + '-' + ("0" + this.month).slice(-2) + '-' + this.year;
+      var id = 'day-' + ("0" + day).slice(-2) + '-' + ("0" + (this.month + 1)).slice(-2) + '-' + this.year;
 
       if (day <= monthLength && (week > 0 || weekDay >= startingDay)) {
         html += '<td id="' + id + '">' +  day + '</td>';
@@ -106,3 +106,14 @@ Calendar.prototype.generateHTML = function(){
 Calendar.prototype.getHTML = function() {
   return this.html;
 }
+
+$(document).ready(function() {
+
+  $.each(cal_unavailable_dates, function() {
+    // console.log(this);
+    id = '#day-' + this;
+    console.log(id);
+    $(id).addClass('unavailable');
+  });
+
+});
