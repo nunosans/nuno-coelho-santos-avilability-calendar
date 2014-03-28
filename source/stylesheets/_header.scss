@@ -1,0 +1,46 @@
+header {
+  display: block;
+  width: $cell-size * 7;
+  padding: 20px 0 35px;
+  margin: 0 auto;
+  height: 160px;
+  -webkit-transition-property: width;
+     -moz-transition-property: width;
+       -o-transition-property: width;
+          transition-property: width;
+  -webkit-transition-duration: 0.3s;
+     -moz-transition-duration: 0.3s;
+       -o-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+   h1 {
+    float: left;
+    font-style: normal;
+    em,
+    em a {
+      font-style: normal;
+      color: darken(white, 45%);
+      -webkit-transition-property: color;
+         -moz-transition-property: color;
+           -o-transition-property: color;
+              transition-property: color;
+      -webkit-transition-duration: 1.2s;
+         -moz-transition-duration: 1.2s;
+           -o-transition-duration: 1.2s;
+              transition-duration: 1.2s;
+    }
+    em a:hover,
+    em a:active,
+    em a:focus {
+      color: lighten(red, 10%);
+      -webkit-transition-duration: 0.0s;
+         -moz-transition-duration: 0.0s;
+           -o-transition-duration: 0.0s;
+              transition-duration: 0.0s;
+    }
+  }
+  p {
+    float: left;
+    clear: both;
+    width: $cell-size * 5;
+  }
+}

@@ -9,6 +9,7 @@ cal_months_labels = ['January', 'February', 'March', 'April',
 // these are the current unavailable dates.
 cal_unavailable_dates = [
   '31-03-2014',
+  '07-04-2014',
   '01-04-2014',
   '02-04-2014',
   '03-04-2014',
@@ -51,17 +52,19 @@ Calendar.prototype.generateHTML = function(){
 
   // do the header
   var html = '<table class="calendar-table">';
-  html += '<tr class="calendar-header">';
+  html += '<thead><tr>';
   for(var i = 0; i <= 6; i++ ){
     html += '<td class="calendar-header-day">';
      html += cal_days_labels[i];
     html += '</td>';
   }
-  html += '</tr>';
+  html += '</tr></thead>';
 
   // fill in the days
   var day = 1;
   var month = 0;
+
+  html += '<tbody>';
 
   // this loop is for is weeks (rows)
   for (var week = 0; week < 52; week++) {
@@ -103,7 +106,7 @@ Calendar.prototype.generateHTML = function(){
     html += '</tr>';
   };
 
-  html += '</table>';
+  html += '</tbody></table>';
 
   this.html = html;
 };
@@ -114,13 +117,15 @@ Calendar.prototype.getHTML = function() {
 
 $(document).ready(function() {
 
+  var requestedDays = [];
+
   $.each(cal_unavailable_dates, function() {
     // console.log(this);
     id = '#day-' + this;
     $(id).addClass('unavailable');
   });
 
-  var requestedDays = []
+
 
   $('td').click(function() {
     $el = $(this);
@@ -136,7 +141,8 @@ $(document).ready(function() {
         var requestText = 'Request ' + requestedDays.length + ' days'
       };
 
-      $('.request-button').text(requestText).show();
+      $('.request-button').text(requestText);
+      $('.sidebar').show();
       $el.addClass('selected');
 
     } else if ($el.hasClass('selected')) {
@@ -147,7 +153,7 @@ $(document).ready(function() {
       console.log(requestedDays);
 
       if (requestedDays.length == 0) {
-        $('.request-button').hide();
+        $('.sidebar').hide();
       } else if (requestedDays.length == 1) {
         var requestText = 'Request 1 day';
       } else {
@@ -178,6 +184,12 @@ $(document).ready(function() {
 
   $('.request-button').click(function() {
     $('.request-form').show();
-  })
+  });
+
+  $('.request-clear-button').click(function() {
+    $('.calendar').find('.selected').removeClass('selected');
+    requestedDays = [];
+    $('.sidebar').hide();
+  });
 
 });

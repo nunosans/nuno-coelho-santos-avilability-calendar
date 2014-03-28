@@ -1,0 +1,31 @@
+.sidebar {
+  display: none;
+  position: fixed;
+  top: 160px;
+  left: 50%;
+  margin-top: 11px;
+  margin-left: 300px;
+  z-index: 10;
+  -webkit-animation-name:bounce-in-down;
+          animation-name:bounce-in-down;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  // -webkit-animation-fill-mode: both;
+          // animation-fill-mode: both;
+  a {
+    margin-bottom: 7px;
+  }
+}
+
+.request-button {
+  // color: lighten(forestGreen, 10%);
+  // border-bottom-color: rgba(lighten(forestGreen, 10%), 0.25);
+  &:hover {
+    // border-bottom-color: rgba(lighten(forestGreen, 10%), 0.5);
+  }
+}
+
+.request-clear-button {
+  border-bottom: none;
+  color: darken(white, 50%);
+}
