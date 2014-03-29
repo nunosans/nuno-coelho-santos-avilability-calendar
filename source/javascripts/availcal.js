@@ -153,7 +153,7 @@ $(document).ready(function() {
       console.log(requestedDays);
 
       if (requestedDays.length == 0) {
-        $('.sidebar').hide();
+        $('.sidebar').fadeOut(300);
       } else if (requestedDays.length == 1) {
         var requestText = 'Request 1 day';
       } else {
@@ -179,17 +179,24 @@ $(document).ready(function() {
   defineCurrentDate();
 
   $('.close').click(function() {
-    $('.request-form').hide();
+    $('.request-form').fadeOut(300);
+    $('.modal-overlay').fadeOut(300);
+  });
+
+  $('.modal-overlay').click(function() {
+    $('.request-form').fadeOut(300);
+    $('.modal-overlay').fadeOut(300);
   });
 
   $('.request-button').click(function() {
     $('.request-form').show();
+    $('.modal-overlay').fadeIn(200);
   });
 
   $('.request-clear-button').click(function() {
     $('.calendar').find('.selected').removeClass('selected');
     requestedDays = [];
-    $('.sidebar').hide();
+    $('.sidebar').fadeOut(300);
   });
 
 });
