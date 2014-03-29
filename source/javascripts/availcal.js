@@ -133,7 +133,6 @@ $(document).ready(function() {
     if (!$el.hasClass('unavailable') && !$el.hasClass('empty') && !$el.hasClass('selected')) {
 
       requestedDays.push($el.attr('id').slice(-10));
-      console.log(requestedDays);
 
       if (requestedDays.length == 1) {
         var requestText = 'Request 1 day'
@@ -189,14 +188,44 @@ $(document).ready(function() {
   });
 
   $('.request-button').click(function() {
-    $('.request-form').show();
-    $('.modal-overlay').fadeIn(200);
+    $('.request-form').hide().removeClass('dismissed').show();
+    $('.modal-overlay').show();
   });
 
   $('.request-clear-button').click(function() {
     $('.calendar').find('.selected').removeClass('selected');
     requestedDays = [];
     $('.sidebar').fadeOut(300);
+  });
+
+  $('.request-form-submit').click(function() {
+
+    var requestMessage = $('.request-form-message').val() + '\n\nDays requested:\n' +
+                         requestedDays.join('\n');
+
+    var data = {
+        email: $('.request-form-email').val(),
+        message: requestMessage
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: '/availability/request.php',
+        data: data,
+        success: function(){
+            $('.request-form').addClass('dismissed');
+            $('.modal-overlay').fadeOut(300);
+            $('.calendar').find('.selected').removeClass('selected');
+            requestedDays = [];
+            $('.sidebar').fadeOut(300);
+            $('.request-form-confirmation').show();
+            setTimeout(function() {
+              $('.request-form-confirmation').fadeOut(300);
+            },
+            5000);
+        }
+    });
+
   });
 
 });
