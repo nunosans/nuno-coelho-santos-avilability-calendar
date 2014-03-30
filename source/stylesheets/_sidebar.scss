@@ -10,18 +10,10 @@
           animation-name:bounce-in-down;
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
-  // -webkit-animation-fill-mode: both;
-          // animation-fill-mode: both;
+  -webkit-animation-timing-funciton: ease-in-out;
+          animation-timing-funciton: ease-in-out;
   a {
     margin-bottom: 7px;
-  }
-}
-
-.request-button {
-  // color: lighten(forestGreen, 10%);
-  // border-bottom-color: rgba(lighten(forestGreen, 10%), 0.25);
-  &:hover {
-    // border-bottom-color: rgba(lighten(forestGreen, 10%), 0.5);
   }
 }
 

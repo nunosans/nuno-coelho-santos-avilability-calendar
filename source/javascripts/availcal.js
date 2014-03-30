@@ -221,6 +221,8 @@ $(document).ready(function() {
             $('.request-form-confirmation').show();
             setTimeout(function() {
               $('.request-form-confirmation').fadeOut(300);
+              $('.request-form-email').val('');
+              $('.request-form-message').val('');
             },
             5000);
         }

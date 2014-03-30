@@ -33,14 +33,11 @@
     width: $cell-size * 7;
     position: absolute;
     top: -  $cell-size / 2;
-    // border: 1px solid red;
     td,
     td:hover {
       font-size: 14px;
       height: $cell-size / 2;
-      // background-color: darken(white, 25%);
       background-color: lighten(red, 15%);
-      // border: 1px solid red;
       color: white;
       cursor: default;
     }
@@ -70,7 +67,6 @@
          -o-transition-duration: 0s;
             transition-duration: 0s;
       background-color: lighten(red, 48%);
-      // background-color: lighten(forestGreen, 62%);
     }
   }
 
@@ -87,8 +83,6 @@
 
   .unavailable {
     background-color: darken(white, 6%);
-    /*background-color: lighten(red, 35%);*/
-    /*border: 1px solid lighten(red, 25%);*/
   }
 
   .past {
@@ -114,14 +108,10 @@
   .selected,
   .selected:hover {
     background-color: lighten(red, 15%);
-    // background-color: lighten(forestGreen, 25%);
     border: 1px solid lighten(red, 18%);
-    // border: 1px solid lighten(forestGreen, 20%);
-    // color: darken(forestGreen, 10%);
     color: white;
     td:hover {
       background-color: lighten(red, 48%);
-      // background-color: lighten(forestGreen, 48%);
     }
     b {
       color: black;
