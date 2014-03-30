@@ -19,10 +19,10 @@
     border-bottom: none;
     border-right: none;
     cursor: pointer;
-    -webkit-transition-property: background-color;
-       -moz-transition-property: background-color;
-         -o-transition-property: background-color;
-            transition-property: background-color;
+    -webkit-transition-property: background-color, color;
+       -moz-transition-property: background-color, color;
+         -o-transition-property: background-color, color;
+            transition-property: background-color, color;
     -webkit-transition-duration: 1.2s;
        -moz-transition-duration: 1.2s;
          -o-transition-duration: 1.2s;
@@ -47,6 +47,7 @@
     td:nth-child(6),
     td:nth-child(7) {
       background-color: darken(white, 6%);
+      color: darken(white, 33%);
       pointer-events: none;
     }
     td:nth-child(6),
@@ -58,10 +59,10 @@
       pointer-events: none;
     }
     td:hover {
-    -webkit-transition-property: background-color;
-       -moz-transition-property: background-color;
-         -o-transition-property: background-color;
-            transition-property: background-color;
+    -webkit-transition-property: background-color, color;
+       -moz-transition-property: background-color, color;
+         -o-transition-property: background-color, color;
+            transition-property: background-color, color;
     -webkit-transition-duration: 0s;
        -moz-transition-duration: 0s;
          -o-transition-duration: 0s;
@@ -83,11 +84,15 @@
 
   .unavailable {
     background-color: darken(white, 6%);
+    color: darken(white, 33%);
   }
 
-  .past {
+  .past,
+  .past:nth-child(6),
+  .past:nth-child(7) {
     background-color: darken(white, 6%);
-    color: darken(white, 20%);
+    color: darken(white, 33%);
+    // color: transparent;
   }
 
   .today {
@@ -112,9 +117,6 @@
     color: white;
     td:hover {
       background-color: lighten(red, 48%);
-    }
-    b {
-      color: black;
     }
   }
 
