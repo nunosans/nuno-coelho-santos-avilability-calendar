@@ -9,11 +9,11 @@ cal_months_labels = ['January', 'February', 'March', 'April',
 // these are the current unavailable dates.
 cal_unavailable_dates = [
   '31-03-2014',
-  '07-04-2014',
   '01-04-2014',
   '02-04-2014',
   '03-04-2014',
   '04-04-2014',
+  '07-04-2014',
   '08-04-2014',
   '09-04-2014',
   '10-04-2014',
@@ -23,7 +23,14 @@ cal_unavailable_dates = [
   '16-04-2014',
   '17-04-2014',
   '18-04-2014',
-  '29-04-2014'
+  '21-04-2014',
+  '22-04-2014',
+  '29-04-2014',
+  '05-05-2014',
+  '26-05-2014',
+  '25-08-2014',
+  '25-12-2014',
+  '26-12-2014'
 ];
 
 // these are the days of the week for each month, in order
