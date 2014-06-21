@@ -2,7 +2,7 @@
 
 var cal = new Calendar();
 cal.generateHTML();
-$('.calendar').html(cal.getHTML());
+// $('.calendar').html(cal.getHTML());
 
 $(document).ready(function() {
 
