@@ -14,6 +14,14 @@ cal_unavailable_dates = [
   '25-08-2014',
   '25-12-2014',
   '26-12-2014',
+  // BLACK App website
+  '14-07-2014',
+  '15-07-2014',
+  '16-07-2014',
+  '17-07-2014',
+  '18-07-2014',
+  '19-07-2014',
+  '20-07-2014'
 ];
 
 // these are the days of the week for each month, in order
