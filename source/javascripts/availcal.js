@@ -224,8 +224,7 @@ $(document).ready(function() {
 
   $('.request-form-submit').click(function() {
 
-    var requestMessage = $('.request-form-message').val() + '\n\nDays requested:\n' +
-                         requestedDays.join('\n');
+    var requestMessage = '\n\nDays requested:\n' + requestedDays.join('\n');
 
     var data = {
         email: $('.request-form-email').val(),
@@ -246,7 +245,6 @@ $(document).ready(function() {
             setTimeout(function() {
               $('.request-form-confirmation').fadeOut(300);
               $('.request-form-email').val('');
-              $('.request-form-message').val('');
             },
             5000);
         }
