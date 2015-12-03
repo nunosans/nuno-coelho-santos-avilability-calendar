@@ -104,7 +104,9 @@ cal_unavailable_dates = [
   '31-12-2015',
   '01-01-2015',
   '02-01-2015',
-  '03-01-2015'
+  '03-01-2015',
+  // Language School induction.
+  '07-01-2015'
 ];
 
 // these are the days of the week for each month, in order
